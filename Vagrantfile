@@ -41,6 +41,7 @@ Vagrant.configure("2") do |config|
       # Provision both VMs using Ansible after the last VM is booted.
       if opts[:name] == "ansible-host"
         config.vm.provision :shell, path: "ansible-install.sh"
+        config.vm.provision :shell, path: "host.sh"
       end 
         config.vm.provision :file do |file|
         file.source	    = 'playbooks/ping.yml'
@@ -53,4 +54,4 @@ Vagrant.configure("2") do |config|
     config.vm.provision :shell, path: "bootstrap-node.sh"
    end    
   end
-end  
+end
