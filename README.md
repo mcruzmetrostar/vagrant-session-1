@@ -6,19 +6,12 @@ client1
 client2 
 ansible-host
 
+vagrant up --provider virtualbox
 
 Requirements:
 
 Vagrant - 1.8.x
-Vagrant plugins - vagrant-hostmanager
-                - vagrant-vbguest
+Vagrant plugins - vagrant-libvirt
+
 Ansible: 2.0.x
 Virtualbox: latest
-           
-Ansible Modules used:
- - pcs_auth.py from https://github.com/styopa/ansible-pacemaker
- - pcs_resource.py from https://github.com/styopa/ansible-pacemaker
-
-
-
-
