@@ -1,17 +1,17 @@
 ---
-- hosts: webserver
+- hosts: dbserver
   become: yes
 
   tasks:
 
-    - name: install Apache
-      yum: name=httpd  state=present
+    - name: install mysql
+      yum: name=mariadb-server  state=present
 
-    - name: enable apache from start
-      command: systemctl enable httpd.service
+    - name: enable mysql from start
+      command: systemctl enable mariadb.service
 
     - name: start httpd daemon
-      command: systemctl start httpd.service
+      command: systemctl start mariadb.service
     
 
     - name: Determine if firewalld service masked

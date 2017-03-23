@@ -15,3 +15,18 @@ Vagrant plugins - vagrant-libvirt
 
 Ansible: 2.0.x
 Virtualbox: latest
+
+.
+├── ansible-install.sh
+├── bootstrap-node.sh
+├── host.sh
+├── playbooks
+│   ├── ansible.cfg
+│   ├── apache.yml
+│   ├── inventory
+│   ├── mysql.yml
+│   ├── ping.yml
+│   └── vars.yml
+├── README.md
+└── Vagrantfile
+

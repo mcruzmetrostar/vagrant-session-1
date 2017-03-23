@@ -45,11 +45,23 @@ Vagrant.configure("2") do |config|
       end 
         config.vm.provision :file do |file|
         file.source	    = 'playbooks/ping.yml'
-        file.destination    = '/home/vagrant/ping.yml'
+        file.destination    = '/home/vagrant/playbooks/ping.yml'
+      end
+        config.vm.provision :file do |file|
+        file.source         = 'playbooks/ansible.cfg'
+        file.destination    = '/home/vagrant/ansible.cfg'
+      end
+        config.vm.provision :file do |file|
+        file.source         = 'playbooks/inventory'
+        file.destination    = '/home/vagrant/inventory'
+      end
+        config.vm.provision :file do |file|
+        file.source         = 'playbooks/mysql.yml'
+        file.destination    = '/home/vagrant/playbooks/mysql.yml'
       end
         config.vm.provision :file do |file|
         file.source         = 'playbooks/apache.yml'
-        file.destination    = '/home/vagrant/apache.yml'
+        file.destination    = '/home/vagrant/playbooks/apache.yml'
       end
     config.vm.provision :shell, path: "bootstrap-node.sh"
    end    
