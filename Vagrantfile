@@ -12,7 +12,14 @@ Vagrant.configure("2") do |config|
     v.memory = 256
     v.cpus = 1
   end
+  config.vm.box = "pbarriscale/centos7-gui"
+  config.vm.synced_folder '.', '/vagrant', disabled: true
+  config.ssh.insert_key = false
 
+  config.vm.provider :virtualbox do |v|
+    v.memory = 1024
+    v.cpus = 1
+  end
   # Define two VMs with static private IP addresses.
   boxes = [
     { 
@@ -29,15 +36,17 @@ Vagrant.configure("2") do |config|
     }
   ]
 
+ 
+
   # Provision each of the VMs.
   boxes.each do |opts|
     config.vm.define opts[:name] do |config|
-#      config.proxy.http     = "http://172.17.172.72:3128"
-#      config.proxy.https    = "http://172.17.172.72:3128"
-#      config.proxy.no_proxy = "localhost,127.0.0.1"
+      config.proxy.http     = "http://172.17.172.72:3128"
+      config.proxy.https    = "http://172.17.172.72:3128"
+      config.proxy.no_proxy = "localhost,127.0.0.1"
       config.vm.hostname = opts[:name]
       config.vm.network :private_network, ip: opts[:ip]
-      
+        
       # Provision both VMs using Ansible after the last VM is booted.
       if opts[:name] == "ansible-host"
         config.vm.provision :shell, path: "ansible-install.sh"
