@@ -10,19 +10,11 @@
     - name: enable mysql from start
       command: systemctl enable mariadb.service
 
-    - name: start httpd daemon
+    - name: start mariadb daemon
       command: systemctl start mariadb.service
     
-
-    - name: Determine if firewalld service masked
-      command: systemctl is-enabled firewalld
-      register: os_firewall_firewalld_masked_output
-      changed_when: false
-      failed_when: false
-
-    - name: Unmask firewalld service
-      command: systemctl unmask firewalld
-      when: os_firewall_firewalld_masked_output.stdout == "masked"
+    - name: all mariadb ports
+      command: firewall-cmd --permanent --add-port=3306/tcp
 
     - name: Start and enable firewalld service
       service:

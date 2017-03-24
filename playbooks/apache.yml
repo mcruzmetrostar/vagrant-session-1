@@ -13,16 +13,8 @@
     - name: start httpd daemon
       command: systemctl start httpd.service
     
-
-    - name: Determine if firewalld service masked
-      command: systemctl is-enabled firewalld
-      register: os_firewall_firewalld_masked_output
-      changed_when: false
-      failed_when: false
-
-    - name: Unmask firewalld service
-      command: systemctl unmask firewalld
-      when: os_firewall_firewalld_masked_output.stdout == "masked"
+    - name: allow port 80 
+      command: firewall-cmd --zone=public --add-port=80/tcp --permanent
 
     - name: Start and enable firewalld service
       service:

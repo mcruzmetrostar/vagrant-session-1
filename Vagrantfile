@@ -76,6 +76,10 @@ Vagrant.configure("2") do |config|
         file.source         = 'playbooks/apache.yml'
         file.destination    = '/home/vagrant/playbooks/apache.yml'
       end
+        config.vm.provision :file do |file|
+        file.source         = 'playbooks/verify-install.yml'
+        file.destination    = '/home/vagrant/playbooks/verify-install.yml'  
+      end
     config.vm.provision :shell, path: "bootstrap-node.sh"
    end    
   end

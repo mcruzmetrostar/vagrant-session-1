@@ -7,6 +7,9 @@ mkdir /home/vagrant/playbooks
 chown vagrant:vagrant /home/vagrant/playbooks
 mkdir /home/vagrant/playbooks/keys
 chown vagrant:vagrant /home/vagrant/playbooks/keys
+sudo yum install lsb-core-noarch -y
+rpm -ivh https://github.com/atom/atom/releases/download/v1.11.1/atom.x86_64.rpm
+
 cat >> /etc/ansible/hosts <<-EOL
 [client2]
 192.168.29.2
