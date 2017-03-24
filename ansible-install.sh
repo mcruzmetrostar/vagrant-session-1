@@ -5,6 +5,8 @@ sudo yum install telnet -y
 #sudo yum -y groups install "GNOME Desktop" 
 mkdir /home/vagrant/playbooks
 chown vagrant:vagrant /home/vagrant/playbooks
+mkdir /home/vagrant/playbooks/keys
+chown vagrant:vagrant /home/vagrant/playbooks/keys
 cat >> /etc/ansible/hosts <<-EOL
 [client2]
 192.168.29.2

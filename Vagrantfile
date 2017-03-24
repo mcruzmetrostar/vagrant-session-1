@@ -4,16 +4,16 @@ file_to_disk = "tmp/second_disk.vdi"
 
 Vagrant.configure("2") do |config|
   # Base VM OS configuration.
-  config.vm.box = "bento/centos-7.2"
-  config.vm.synced_folder '.', '/vagrant', disabled: true
-  config.ssh.insert_key = false
+#  config.vm.box = "bento/centos-7.2"
+#  config.vm.synced_folder '.', '/vagrant', disabled: true
+#  config.ssh.insert_key = false
 
-  config.vm.provider :virtualbox do |v|
-    v.memory = 256
-    v.cpus = 1
-  end
+#  config.vm.provider :virtualbox do |v|
+#    v.memory = 256
+#    v.cpus = 1
+#  end
   config.vm.box = "pbarriscale/centos7-gui"
-  config.vm.synced_folder '.', '/vagrant', disabled: true
+#  config.vm.synced_folder '.', '/vagrant', disabled: true
   config.ssh.insert_key = false
 
   config.vm.provider :virtualbox do |v|
@@ -41,9 +41,9 @@ Vagrant.configure("2") do |config|
   # Provision each of the VMs.
   boxes.each do |opts|
     config.vm.define opts[:name] do |config|
-      config.proxy.http     = "http://172.17.172.72:3128"
-      config.proxy.https    = "http://172.17.172.72:3128"
-      config.proxy.no_proxy = "localhost,127.0.0.1"
+#      config.proxy.http     = "http://172.17.172.72:3128"
+#      config.proxy.https    = "http://172.17.172.72:3128"
+#      config.proxy.no_proxy = "localhost,127.0.0.1"
       config.vm.hostname = opts[:name]
       config.vm.network :private_network, ip: opts[:ip]
         
@@ -55,6 +55,10 @@ Vagrant.configure("2") do |config|
         config.vm.provision :file do |file|
         file.source	    = 'playbooks/ping.yml'
         file.destination    = '/home/vagrant/playbooks/ping.yml'
+      end
+        config.vm.provision :file do |file|
+        file.source     = 'keys/vagrant'
+        file.destination    = '/home/vagrant/playbooks/keys/vagrant'
       end
         config.vm.provision :file do |file|
         file.source         = 'playbooks/ansible.cfg'
