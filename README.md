@@ -1,4 +1,4 @@
-# glusterfs-pacemakerHA
+# BAU Ansible training: Session 1
 
 This vagrant file will create 3 VM. 
 
