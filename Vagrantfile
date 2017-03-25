@@ -4,16 +4,8 @@ file_to_disk = "tmp/second_disk.vdi"
 
 Vagrant.configure("2") do |config|
   # Base VM OS configuration.
-#  config.vm.box = "bento/centos-7.2"
-#  config.vm.synced_folder '.', '/vagrant', disabled: true
-#  config.ssh.insert_key = false
-
-#  config.vm.provider :virtualbox do |v|
-#    v.memory = 256
-#    v.cpus = 1
-#  end
-  config.vm.box = "pbarriscale/centos7-gui"
-#  config.vm.synced_folder '.', '/vagrant', disabled: true
+  config.vm.box = "Datacom-Centos7.3mc"
+  config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", disabled: true
   config.ssh.insert_key = false
 
   config.vm.provider :virtualbox do |v|
