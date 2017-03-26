@@ -13,6 +13,14 @@
     - name: start httpd daemon
       command: systemctl start httpd.service
     
+    - name: start Firewalld
+      service:
+        name: firewalld
+        state: started
+        enabled: yes
+      register: result
+
+
     - name: allow port 80 
       command: firewall-cmd --zone=public --add-port=80/tcp --permanent
 

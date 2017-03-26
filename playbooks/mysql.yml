@@ -12,6 +12,13 @@
 
     - name: start mariadb daemon
       command: systemctl start mariadb.service
+
+    - name: start Firewalld
+      service:
+        name: firewalld
+        state: started
+        enabled: yes
+      register: result
     
     - name: all mariadb ports
       command: firewall-cmd --permanent --add-port=3306/tcp

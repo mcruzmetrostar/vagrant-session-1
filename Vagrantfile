@@ -5,14 +5,14 @@ Vagrant.configure("2") do |config|
   boxes = [
     { 
       :name => "client2", 
-      :box => "bento/centos-7.2",
+      :box => "Datacom_Centos7.2base",
       :ram => 512,
       :vcpu => 1,
       :ip => "192.168.29.2" 
     },
     { 
       :name => "client1",
-      :box => "bento/centos-7.2", 
+      :box => "Datacom_Centos7.2base", 
       :ram => 512,
       :vcpu => 1,
       :ip => "192.168.29.3" 
@@ -31,9 +31,9 @@ Vagrant.configure("2") do |config|
   boxes.each do |opts|
     config.vm.define opts[:name] do |config|
 #   Only Enable this if you are connecting to Proxy server
-#      config.proxy.http     = "http://172.17.172.72:3128"
-#      config.proxy.https    = "http://172.17.172.72:3128"
-#      config.proxy.no_proxy = "localhost,127.0.0.1"
+      config.proxy.http     = "http://yyyy:xxxx@dnzwgpx2.datacom.co.nz:80"
+      config.proxy.https    = "http://yyyy:xxxx@dnzwgpx2.datacom.co.nz:80"
+      config.proxy.no_proxy = "localhost,127.0.0.1"
       config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", disabled: true
       config.ssh.insert_key = false
       config.vm.box = opts[:box]
