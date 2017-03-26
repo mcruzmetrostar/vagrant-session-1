@@ -44,6 +44,52 @@ Once you are done:
 
 ## Ansible Testing
 
+## The Vagrantfile:
 
+```
+Vagrant.configure("2") do |config|
+# Define VMs with static private IP addresses, vcpu, memory and vagrant-box.
+  boxes = [
+    {
+      :name => "client2",
+      :box => "bento/centos-7.2",
+      :ram => 512,
+      :vcpu => 1,
+      :ip => "192.168.29.2"
+    },
+    {
+      :name => "client1",
+      :box => "bento/centos-7.2",
+      :ram => 512,
+      :vcpu => 1,
+      :ip => "192.168.29.3"
+    },
+    {
+      :name => "ansible-host",
+      :box => "Datacom_Centos7.3GUI",
+      :ram => 1024,
+      :vcpu => 1,
+      :ip => "192.168.29.4"
+    }
+  ]
+
+
+  # Provision each of the VMs.
+  boxes.each do |opts|
+    config.vm.define opts[:name] do |config|
+#   Only Enable this if you are connecting to Proxy server
+#      config.proxy.http     = "http://x.x.x.x:3128"
+#      config.proxy.https    = "http://x.x.x.x:3128"
+#      config.proxy.no_proxy = "localhost,127.0.0.1"
+      config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", disabled: true
+      config.ssh.insert_key = false
+      config.vm.box = opts[:box]
+      config.vm.hostname = opts[:name]
+      config.vm.provider :virtualbox do |v|
+        v.memory = opts[:ram]
+        v.cpus = opts[:vcpu]
+      end
+
+```
 
 
