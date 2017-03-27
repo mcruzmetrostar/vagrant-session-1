@@ -1,4 +1,7 @@
 ---
+webserver_hostname: webserver01
+dabserver_hostname: database01
+
 # Firewall configuration.
 firewall_allowed_tcp_ports:
   - 22

@@ -63,6 +63,12 @@ Vagrant.configure("2") do |config|
       end
       if opts[:name] == "ansible-host"
         config.vm.provision :file do |file|
+        file.source         = 'playbooks/update_hostname.yml'
+        file.destination    = '/home/vagrant/playbooks/update_hostname.yml'
+        end
+      end
+      if opts[:name] == "ansible-host"
+        config.vm.provision :file do |file|
         file.source         = 'playbooks/ansible.cfg'
         file.destination    = '/home/vagrant/ansible.cfg'
         end
@@ -89,6 +95,18 @@ Vagrant.configure("2") do |config|
         config.vm.provision :file do |file|
         file.source         = 'playbooks/verify-install.yml'
         file.destination    = '/home/vagrant/playbooks/verify-install.yml'  
+        end 
+      end
+      if opts[:name] == "ansible-host"
+        config.vm.provision :file do |file|
+        file.source         = 'playbooks/vars.yml'
+        file.destination    = '/home/vagrant/playbooks/vars.yml'  
+        end 
+      end
+      if opts[:name] == "ansible-host"
+        config.vm.provision :file do |file|
+        file.source         = 'playbooks/lamp.yml'
+        file.destination    = '/home/vagrant/playbooks/lamp.yml'  
         end 
       end
     config.vm.provision :shell, path: "bootstrap-node.sh"
