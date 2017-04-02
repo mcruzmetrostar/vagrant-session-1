@@ -8,10 +8,10 @@ chown vagrant:vagrant /home/vagrant/playbooks
 mkdir /home/vagrant/playbooks/keys
 chown vagrant:vagrant /home/vagrant/playbooks/keys
 chmod 755 /home/vagrant/playbooks/keys
-chmod 755 /home/vagrant/playbooks/keys/vagrant
-sudo yum install lsb-core-noarch -y
-rpm -qa | grep atom
-if [ $? -eq 1 ]; then 
+#chmod 755 /home/vagrant/playbooks/keys/vagrant
+#sudo yum install lsb-core-noarch -y
+#rpm -qa | grep atom
+#if [ $? -eq 1 ]; then 
 #  echo "This is the previous output $?	"
-  rpm -ivh https://github.com/atom/atom/releases/download/v1.11.1/atom.x86_64.rpm
-fi
+#  rpm -ivh https://github.com/atom/atom/releases/download/v1.11.1/atom.x86_64.rpm
+#fi

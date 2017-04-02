@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
     },
     { 
       :name => "ansible-host",
-      :box => "Datacom_Centos7.3GUI",
+      :box => "Datacom_Centos7.3_gui_v2",
       :ram => 1024,
       :vcpu => 1,
       :ip => "192.168.29.4" 
